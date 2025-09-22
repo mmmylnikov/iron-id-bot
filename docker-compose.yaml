@@ -1,0 +1,9 @@
+services:
+  tg-bot:
+    build: .
+    image: ghcr.io/mmmylnikov/iron-id-bot:latest
+    container_name: ironid-bot
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - BOT_USERNAME=${BOT_USERNAME}
