@@ -1,7 +1,7 @@
 services:
   tg-bot:
     build: .
-    image: ghcr.io/mmmylnikov/iron-id-bot:latest
+    image: ghcr.io/mmmylnikov/iron-id-bot:0.2.0
     container_name: ironid-bot
     restart: unless-stopped
     environment:

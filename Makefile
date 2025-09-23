@@ -30,6 +30,13 @@ actci:
 
 # CORE
 
+VERSION := $(shell grep -m1 '^version *= *' pyproject.toml | sed -E 's/version *= *["'\'']([^"'\'']+)["'\'']/\1/')
+
 bot:
 	uv run bot.py
 
+build:
+	docker build . --tag ghcr.io/mmmylnikov/iron-id-bot:$(VERSION) --platform linux/amd64
+
+push:
+	docker push ghcr.io/mmmylnikov/iron-id-bot:$(VERSION)
