@@ -123,7 +123,9 @@ CONFIRMED_FORWARDED_REPLY = (
 )
 
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def start_command(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
     """Handle the /start command by sending a welcome message."""
     if not update.message or not update.message.from_user:
         return
@@ -220,12 +222,19 @@ def main() -> None:
 
     application = Application.builder().token(BOT_TOKEN).build()
 
-    application.add_handler(CommandHandler('start', start))
-    application.add_handler(CommandHandler('help', help_command))
+    application.add_handler(
+        CommandHandler('start', start_command, filters=filters.ChatType.PRIVATE)
+    )
+    application.add_handler(
+        CommandHandler('help', help_command, filters=filters.ChatType.PRIVATE)
+    )
 
     application.add_handler(InlineQueryHandler(inline_query))
     application.add_handler(
-        MessageHandler(filters.FORWARDED, check_forwarded_message)
+        MessageHandler(
+            filters.ChatType.PRIVATE & filters.FORWARDED,
+            check_forwarded_message,
+        )
     )
 
     logger.info('Starting bot polling...')

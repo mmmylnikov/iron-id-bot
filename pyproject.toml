@@ -1,6 +1,6 @@
 [project]
 name = "iron-id-bot"
-version = "0.2.0"
+version = "0.2.1"
 description = "Telegram inline bot that tags messages with unique UUIDs, adding irony, sarcasm, and meme styles."
 keywords = [
     "telegram",

@@ -10,6 +10,12 @@ Semantic versioning in our case means:
 - Major releases indicate significant milestones or serious breaking changes.
 
 
+## Version 0.2.1
+
+### Fix
+
+- /start & /help commands and check_forwarded_message allowed only private chats
+
 ## Version 0.2.0
 
 > Added forwarded message verification and expanded functionality.
